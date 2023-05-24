@@ -45,6 +45,9 @@ import torch
 from torch import nn
 from Sophia import Sophia
 
+#or decoupled
+#from Sophia import DecoupledSophia #plug in and play, personalize, improved maintainability
+
 
 #define your model
 
@@ -67,6 +70,9 @@ input_data = ... #input data
 
 #init the optimizer
 optimizer = Sophia(model, input_data, model.parameters(), lr=1e-3, estimator="Hutchinson")
+
+#decoupled
+#optimizer = DecoupledSophia(model.parameters(), hessian_estimator, lr=1e-3)
 
 
 #training loop
@@ -206,3 +212,18 @@ Sophia optimizer for other domains: Adapt the Sophia optimizer for other domains
 
 
 By following this roadmap, we aim to make the Sophia optimizer a powerful and versatile tool for the deep learning community, enabling users to train their models more efficiently and effectively.
+
+
+# Epoch 1 - Decoupled Sophia
+
+The DecoupledSophia optimizer offers several benefits that can help accelerate training speed and improve the flexibility of the optimization process:
+
+Modularity: Decoupling the Hessian estimation from the main optimizer allows users to easily plug in different Hessian estimators without modifying the core optimizer code. This modularity makes it easier to experiment with various Hessian estimation techniques and find the best one for a specific task.
+
+Ease of experimentation: With a decoupled architecture, researchers and practitioners can develop and test new Hessian estimators independently from the optimizer. This can lead to faster innovation and the discovery of more efficient Hessian estimation methods, which can further accelerate training speed.
+
+Customization: Users can create custom Hessian estimators tailored to their specific use cases or model architectures. This customization can potentially lead to better optimization performance and faster training times.
+
+Improved maintainability: Separating the Hessian estimation from the optimizer makes the codebase easier to maintain and understand. This can lead to faster bug fixes and improvements in the optimizer's performance.
+
+By offering these benefits, DecoupledSophia can help users accelerate training speed and improve the overall optimization process. The modular design allows for easy experimentation with different Hessian estimators, which can lead to the discovery of more efficient techniques and ultimately faster training times.
