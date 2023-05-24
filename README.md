@@ -2,6 +2,8 @@
 
 Cut Model Training Cost by 50%? with this all-new simple plug in and play Optimizer: Sophia
 
+[Sophia: A Scalable Stochastic Second-order Optimizer for
+Language Model Pre-training](https://arxiv.org/pdf/2305.14342.pdf)
 
 Sophia is an second order clipped stochastic optimization algorithm that uses an inexpensive stochastic estimate of the diagonal of the Hessian as an pre-conditioner and a clipping mechanism to control the worst case update size. It achieves better performance than adam in terms of validation pre-traing loss, total compute, and wall-clock time. By cutting model training cost in half, Sophia can help save millions if not billions of dollars in computational resources.
 
