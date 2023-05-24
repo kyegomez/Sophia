@@ -181,23 +181,18 @@ The following roadmap outlines the future development plans for the Sophia optim
 
 ## Short-term Goals
 
-Ready to train plug in and play with your own model or Andromeda
+Ready to train plug in and play file with your own model or Andromeda
 
-Performance improvements: Investigate and implement potential performance improvements to further reduce training time and computational resources.
+Performance improvements: Investigate and implement potential performance improvements to further reduce training time and computational resources -> Decoupled Sophia + heavy metric logging + Implement in Triton and or Jax?
 
 Additional Hessian estimators: Research and implement other Hessian estimators to provide more options for users.
 
 Hyperparameter tuning: Develop a set of recommended hyperparameters for various use cases and model architectures.
 
-Documentation: Improve documentation, including detailed explanations of the algorithm, hyperparameters, and 
-Hessian estimators.
-
-Tutorials: Create tutorials and examples for popular deep learning frameworks (e.g., TensorFlow, Keras) to help users integrate Sophia into their training pipelines.
-
 # Mid-term Goals
 Integration with Andromeda model: Train the Andromeda model using the Sophia optimizer and compare its performance with other optimizers.
 
-Sophia optimizer variants: Explore and develop variants of the Sophia optimizer tailored for specific tasks, such as computer vision, natural language processing, and reinforcement learning.
+Sophia optimizer variants: Explore and develop variants of the Sophia optimizer tailored for specific tasks, such as computer vision, multi-modality AI, and natural language processing, and reinforcement learning.
 
 Distributed training: Implement support for distributed training to enable users to train large-scale models using Sophia across multiple devices and nodes.
 
