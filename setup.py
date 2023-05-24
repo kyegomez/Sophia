@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-  name = 'Sophia',
+  name = 'Sophia-Optimizer',
   packages = find_packages(exclude=[]),
   version = '0.1.1',
   license='APACHE',
