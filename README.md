@@ -1,6 +1,6 @@
 # Sophia Optimizer
 
-### Cut Model Training Cost by 50%
+Cut Model Training Cost by 50%
 
 ## 👥 Share With Your Friends
 If you find Sophia useful, please share this GitHub repository with your friends and colleagues. Let's cut the cost of AI training together!
@@ -12,7 +12,7 @@ If you find Sophia useful, please share this GitHub repository with your friends
 # 🌐 Agora: AI Researchers Advancing Humanity
 Sophia is backed by Agora, a community of AI researchers dedicated to advancing humanity and solving some of the world's biggest problems. Join us in making a difference!
 
-[Join our discord and write your mark on the history books]()
+[Join our discord and write your mark on the history books](https://discord.gg/qUtxnK2NMf)
 
 Sophia is an second order clipped stochastic optimization algorithm that uses an inexpensive stochastic estimate of the diagonal of the Hessian as an pre-conditioner and a clipping mechanism to control the worst case update size. It achieves better performance than adam in terms of validation pre-traing loss, total compute, and wall-clock time. By cutting model training cost in half, Sophia can help save millions if not billions of dollars in computational resources.
 
