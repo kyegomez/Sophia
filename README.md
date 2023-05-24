@@ -40,12 +40,11 @@ Sophia is backed by Agora, a community of AI researchers dedicated to advancing 
 
 Download with pip ```pip install Sophia-Optimizer```
 
-
 ```python 
 import torch 
 from torch import nn
 from Sophia import Sophia
-from Nebula import Nebula
+
 
 #define your model
 
@@ -63,7 +62,7 @@ class MyModel(nn.Module):
 
 #init model loss function and input data
 model = MyModel()
-loss_function = Nebula()
+loss_function = nn.CrossEntropy()
 input_data = ... #input data
 
 #init the optimizer
