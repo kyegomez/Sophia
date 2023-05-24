@@ -208,8 +208,5 @@ Training multiple models in parallel: Develop a framework for training multiple 
 
 Sophia optimizer for other domains: Adapt the Sophia optimizer for other domains, such as optimization in reinforcement learning, Bayesian optimization, and evolutionary algorithms.
 
-Sophia optimizer as a service: Create a cloud-based service that allows users to train their models using the Sophia optimizer without having to set up and manage their own infrastructure.
-
-Community engagement: Foster an active community of users and contributors to help improve the Sophia optimizer, share best practices, and develop new features and applications.
 
 By following this roadmap, we aim to make the Sophia optimizer a powerful and versatile tool for the deep learning community, enabling users to train their models more efficiently and effectively.
