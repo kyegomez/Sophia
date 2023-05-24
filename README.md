@@ -169,3 +169,41 @@ class Sophia(torch.optim.Optimizer):
         
 ```
 
+# Roadmap
+The following roadmap outlines the future development plans for the Sophia optimizer. The roadmap is divided into three stages: short-term, mid-term, and long-term goals.
+
+
+## Short-term Goals
+
+Ready to train plug in and play with your own model or Andromeda
+
+Performance improvements: Investigate and implement potential performance improvements to further reduce training time and computational resources.
+
+Additional Hessian estimators: Research and implement other Hessian estimators to provide more options for users.
+
+Hyperparameter tuning: Develop a set of recommended hyperparameters for various use cases and model architectures.
+
+Documentation: Improve documentation, including detailed explanations of the algorithm, hyperparameters, and 
+Hessian estimators.
+
+Tutorials: Create tutorials and examples for popular deep learning frameworks (e.g., TensorFlow, Keras) to help users integrate Sophia into their training pipelines.
+
+# Mid-term Goals
+Integration with Andromeda model: Train the Andromeda model using the Sophia optimizer and compare its performance with other optimizers.
+
+Sophia optimizer variants: Explore and develop variants of the Sophia optimizer tailored for specific tasks, such as computer vision, natural language processing, and reinforcement learning.
+
+Distributed training: Implement support for distributed training to enable users to train large-scale models using Sophia across multiple devices and nodes.
+
+Automatic hyperparameter tuning: Develop an automatic hyperparameter tuning module to help users find the best hyperparameters for their specific use case.
+
+# Long-term Goals
+Training multiple models in parallel: Develop a framework for training multiple models concurrently with different optimizers, allowing users to test and compare the performance of various optimizers, including Sophia, on their specific tasks.
+
+Sophia optimizer for other domains: Adapt the Sophia optimizer for other domains, such as optimization in reinforcement learning, Bayesian optimization, and evolutionary algorithms.
+
+Sophia optimizer as a service: Create a cloud-based service that allows users to train their models using the Sophia optimizer without having to set up and manage their own infrastructure.
+
+Community engagement: Foster an active community of users and contributors to help improve the Sophia optimizer, share best practices, and develop new features and applications.
+
+By following this roadmap, we aim to make the Sophia optimizer a powerful and versatile tool for the deep learning community, enabling users to train their models more efficiently and effectively.
