@@ -30,7 +30,7 @@ Supports both Hutchinson and Gauss-Newton-Bartlett Hessian Estimators
 
 # Usage
 
-Download with pip ```pip install Sophia````
+Download with pip ```pip install Sophia```
 
 
 ```python 
