@@ -91,6 +91,24 @@ for epoch in range(epochs):
         optimizer.step()
 ```
 
+## Training:
+To run training use git clone method and navigate to experiments folder and if not then do the following:
+
+```python
+from Sophia import DecoupledSophia, trainer
+
+
+#train model
+trainer.train()
+
+
+#eval the model
+eval_results = trainer.evaluate()
+print(f"Perplexity: {torch.exp(torch.tensor(eval_results['eval_loss']))}")
+
+```
+
+
 # Algorithmic pseudocode:
 
 ```
