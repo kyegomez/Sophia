@@ -5,7 +5,8 @@ from datasets import load_dataset
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, GPT2Config
 from transformers import DataCollatorForLanguageModeling
 from transformers import Trainer, TrainingArguments
-from decoupled_sophia import DecoupledSophia, HutchinsonEstimator
+from Sophia.decoupled_sophia.decoupled_sophia import DecoupledSophia, HutchinsonEstimator
+from transformers import AutoTokenizer
 
 # Load and preprocess the OpenWebText dataset
 class CFG:
