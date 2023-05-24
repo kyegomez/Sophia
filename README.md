@@ -1,6 +1,6 @@
 # Sophia Optimizer
 
-Cut Model Training Cost by 50%
+Cut Model Training Cost by 50% with this simple plug in Optimizer
 
 ## 👥 Share With Your Friends
 If you find Sophia useful, please share this GitHub repository with your friends and colleagues. Let's cut the cost of AI training together!
