@@ -1,6 +1,24 @@
 # Sophia Optimizer
 
-Cut Model Training Cost by 50% with this all-new simple plug in and play Optimizer: Sophia
+Cut Model Training Cost by 50%? with this all-new simple plug in and play Optimizer: Sophia
+
+
+Sophia is an second order clipped stochastic optimization algorithm that uses an inexpensive stochastic estimate of the diagonal of the Hessian as an pre-conditioner and a clipping mechanism to control the worst case update size. It achieves better performance than adam in terms of validation pre-traing loss, total compute, and wall-clock time. By cutting model training cost in half, Sophia can help save millions if not billions of dollars in computational resources.
+
+
+## Benefits
+
+Sophia achievs the same validation pre training loss with 50% fewer number of steps than Adam
+
+50% less total compute and 50% less wall-clock time
+
+Seamless integration into existing training pipelines -- plug in and play!
+
+No special requirments on model architecture or computing infrastructure
+
+Supports both Hutchinson and Gauss-Newton-Bartlett Hessian Estimators
+
+
 
 ## 👥 Share With Your Friends
 If you find Sophia useful, please share this GitHub repository with your friends and colleagues. Let's cut the cost of AI training together!
@@ -14,19 +32,7 @@ Sophia is backed by Agora, a community of AI researchers dedicated to advancing 
 
 [Join our discord and write your mark on the history books](https://discord.gg/qUtxnK2NMf)
 
-Sophia is an second order clipped stochastic optimization algorithm that uses an inexpensive stochastic estimate of the diagonal of the Hessian as an pre-conditioner and a clipping mechanism to control the worst case update size. It achieves better performance than adam in terms of validation pre-traing loss, total compute, and wall-clock time. By cutting model training cost in half, Sophia can help save millions if not billions of dollars in computational resources.
 
-## Benefits
-
-Sophia achievs the same validation pre training loss with 50% fewer number of steps than Adam
-
-50% less total compute and 50% less wall-clock time
-
-Seamless integration into existing training pipelines -- plug in and play!
-
-No special requirments on model architecture or computing infrastructure
-
-Supports both Hutchinson and Gauss-Newton-Bartlett Hessian Estimators
 
 # Usage
 
