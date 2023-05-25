@@ -12,7 +12,8 @@ class HessianEstimator(ABC):
 class HutchinsonEstimator(HessianEstimator):
     def estimate(self, p, grad):
         u = torch.randn_like(grad)
-        hessian_vector_product = torch.autograd.grad(grad.dot(u), p, retain_graph=True)[0]
+        grad_dot_u = torch.sum(grad * u)
+        hessian_vector_product = torch.autograd.grad(grad_dot_u, p, retain_graph=True)[0]
         return u * hessian_vector_product
     
 
