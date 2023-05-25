@@ -49,7 +49,8 @@ download with git ```git clone https://github.com/kyegomez/Sophia.git ```
 ```python 
 import torch 
 from torch import nn
-from Sophia import Sophia
+from Sophia import Sophia # or Sophia2 for more speed and inplace ops rather than updating params 
+
 
 #or decoupled
 #from Sophia import DecoupledSophia #plug in and play, personalize, improved maintainability
