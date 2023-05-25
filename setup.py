@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
   name = 'Sophia-Optimizer',
   packages = find_packages(exclude=[]),
-  version = '0.1.9',
+  version = '0.2.1',
   license='APACHE',
   description = 'Sophia Optimizer ULTRA FAST',
   author = 'Kye Gomez',
