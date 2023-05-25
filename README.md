@@ -79,7 +79,7 @@ input_data = ... #input data
 optimizer = SophiaG(model.parameters(), lr=2e-4, betas=(0.965, 0.99), rho = 0.01, weight_decay=1e-1)
 
 #decoupled
-#optimizer = DecoupledSophia(model.parameters(), lr=1e-3, betas=(0.9, 0.999), rho=0.04, weight_decay=1e-1, }   estimator="Hutchinson")
+#optimizer = DecoupledSophia(model.parameters(), lr=1e-3, betas=(0.9, 0.999), rho=0.04, weight_decay=1e-1,     estimator="Hutchinson")
 
 #training loop
 for epoch in range(epochs):
