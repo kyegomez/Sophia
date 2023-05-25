@@ -92,7 +92,17 @@ for epoch in range(epochs):
 ```
 
 ## Training:
-To run training use git clone method and navigate to experiments folder and if not then do the following:
+To run training use git clone method
+
+ navigate to experiments folder 
+ 
+ ```cd Sophia```
+ ```cd experiments```
+
+ then run file
+ ```python3 training.py````
+
+ and if not then do the following:
 
 ```python
 from Sophia import DecoupledSophia, trainer

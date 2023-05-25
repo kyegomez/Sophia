@@ -5,7 +5,8 @@ from datasets import load_dataset
 from transformers import GPT2LMHeadModel, GPT2Tokenizer, GPT2Config
 from transformers import DataCollatorForLanguageModeling
 from transformers import Trainer, TrainingArguments
-from Sophia.decoupled_sophia.decoupled_sophia import DecoupledSophia, HutchinsonEstimator
+# from Sophia.decoupled_sophia.decoupled_sophia import DecoupledSophia, HutchinsonEstimator
+from Sophia.Sophia import DecoupledSophia
 from transformers import AutoTokenizer
 
 # Load and preprocess the OpenWebText dataset
@@ -50,11 +51,10 @@ train_dataset = tokenized_dataset.map(
 config = GPT2Config.from_pretrained("gpt2", n_ctx=1024)
 model = GPT2LMHeadModel.from_pretrained("gpt2", config=config)
 
-# Choose a Hessian estimator
-hessian_estimator = HutchinsonEstimator()
+
 
 # Initialize the DecoupledSophia optimizer
-optimizer = DecoupledSophia(model.parameters(), hessian_estimator, lr=1e-3)
+optimizer = DecoupledSophia(model.parameters(), lr=1e-3, betas=(0.9, 0.999), rho=0.04, weight_decay=1e-1, k=10, estimator="Hutchinson")
 
 # Set up the training arguments
 training_args = TrainingArguments(
