@@ -43,7 +43,7 @@ class DecoupledSophia(Optimizer):
             if closure is not None:
                 loss = closure()
 
-        for group in self.params_groups:
+        for group in self.param_groups:
             for p in group['params']:
                 if p.grad is None:
                     continue
