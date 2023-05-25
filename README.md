@@ -32,7 +32,8 @@ If you find Sophia useful, please share this GitHub repository with your friends
 [Share on Linkedin](https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fgithub.com%2Fkyegomez%2FSophia&title=Sophia%20Optimizer&summary=Check%20out%20Sophia%20Optimizer%20-%20a%20second-order%20clipped%20stochastic%20optimization%20algorithm%20that%20cuts%20model%20training%20cost%20in%20half!%20%23DeepLearning%20%23AI%20%23Optimization)
 
 # 🌐 Agora: AI Researchers Advancing Humanity
-Sophia is backed by Agora, a community of AI researchers dedicated to advancing humanity and solving some of the world's biggest problems. Join us in making a difference!
+Sophia is backed by Agora, a community of AI researchers dedicated to advancing humanity and solving some of the Humanity's biggest problems like planetary security, food insecurity, and health insecurity. 
+
 
 [Join our discord and write your mark on the history books](https://discord.gg/qUtxnK2NMf)
 
