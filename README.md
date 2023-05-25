@@ -49,7 +49,7 @@ download with git ```git clone https://github.com/kyegomez/Sophia.git ```
 ```python 
 import torch 
 from torch import nn
-from Sophia import SophiaG # or Sophia2 for more speed and inplace ops rather than updating params 
+from Sophia import SophiaG 
 
 
 #or decoupled
