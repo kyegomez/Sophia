@@ -205,6 +205,30 @@ class Sophia(torch.optim.Optimizer):
     
         
 ```
+# Hyper-parameter Tuning Guide for Decoupled Sophia Optimizer
+When using the Decoupled Sophia optimizer, it's essential to tune the hyperparameters to achieve the best performance for your specific model and dataset. Here's a guide on how to tune the parameters for the Decoupled Sophia optimizer:
+
+## Learning Rate (lr)
+The learning rate is a crucial hyperparameter that controls the step size of the parameter updates during the optimization process. In Decoupled Sophia, the update is written as p.data.addcdiv_(-group['lr'], m, h.add(group['rho'])), which is equivalent to the update in the paper up to a re-parameterization.
+
+### Tips for tuning the learning rate:
+Choose the learning rate to be about half the learning rate that you would use for AdamW. Some partial ongoing results indicate that the learning rate can be made even larger, possibly leading to faster convergence.
+Rho (rho)
+The rho parameter is used in the update rule to control the Hessian's influence on the parameter updates. It is essential to choose an appropriate value for rho to balance the trade-off between the gradient and the Hessian information.
+
+#### Tips for tuning rho:
+Consider choosing rho in the range of 0.03 to 0.04. The rho value seems transferable across different model sizes. For example, rho = 0.03 can be used in 125M and 335M Sophia-G models.
+
+The (lr, rho) for 335M Sophia-G is chosen to be (2e-4, 0.03). Though we suspect that the learning rate can be larger, it's essential to experiment with different values to find the best combination for your specific use case.
+
+### Other Hyperparameters
+While the learning rate and rho are the most critical hyperparameters to tune, you may also experiment with other hyperparameters such as betas, weight_decay, and k (the frequency of Hessian updates). However, the default values provided in the optimizer should work well for most cases.
+
+Remember that hyperparameter tuning is an iterative process, and the best values may vary depending on the model architecture and dataset. Don't hesitate to experiment with different combinations and validate the performance on a held-out dataset or using cross-validation.
+
+Feel free to share your findings and experiences during hyperparameter tuning. Your valuable feedback and comments can help improve the optimizer and its usage in various scenarios.
+
+
 
 # Roadmap
 The following roadmap outlines the future development plans for the Sophia optimizer. The roadmap is divided into three stages: short-term, mid-term, and long-term goals.
