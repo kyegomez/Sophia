@@ -49,7 +49,7 @@ download with git ```git clone https://github.com/kyegomez/Sophia.git ```
 ```python 
 import torch 
 from torch import nn
-from Sophia import Sophia # or Sophia2 for more speed and inplace ops rather than updating params 
+from Sophia import SophiaG # or Sophia2 for more speed and inplace ops rather than updating params 
 
 
 #or decoupled
@@ -76,7 +76,7 @@ loss_function = nn.CrossEntropy()
 input_data = ... #input data
 
 #init the optimizer
-optimizer = Sophia(model, input_data, model.parameters(), lr=1e-3, estimator="Hutchinson")
+optimizer = SophiaG(model.parameters(), lr=2e-4, betas=(0.965, 0.99), rho = 0.01, weight_decay=1e-1)
 
 #decoupled
 #optimizer = DecoupledSophia(model.parameters(), hessian_estimator, lr=1e-3)
