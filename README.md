@@ -1,27 +1,9 @@
 # Sophia Optimizer
 
-Cut Model Training Cost by 50%? with this all-new simple plug in and play Optimizer: Sophia
-
 [Sophia: A Scalable Stochastic Second-order Optimizer for
 Language Model Pre-training](https://arxiv.org/pdf/2305.14342.pdf)
 
-Now with training file ready in experiments folder! 🔥🔥🔥
-
-Sophia is an second order clipped stochastic optimization algorithm that uses an inexpensive stochastic estimate of the diagonal of the Hessian as an pre-conditioner and a clipping mechanism to control the worst case update size. It achieves better performance than adam in terms of validation pre-traing loss, total compute, and wall-clock time. By cutting model training cost in half, Sophia can help save millions if not billions of dollars in computational resources.
-
-
-## Benefits
-
-Sophia achievs the same validation pre training loss with 50% fewer number of steps than Adam
-
-50% less total compute and 50% less wall-clock time
-
-Seamless integration into existing training pipelines -- plug in and play!
-
-No special requirments on model architecture or computing infrastructure
-
-Supports both Hutchinson and Gauss-Newton-Bartlett Hessian Estimators
-
+Cut Model Training Cost by 50%? with this all-new simple plug in and play Optimizer: Sophia
 
 
 ## 👥 Share With Your Friends
@@ -118,6 +100,26 @@ eval_results = trainer.evaluate()
 print(f"Perplexity: {torch.exp(torch.tensor(eval_results['eval_loss']))}")
 
 ```
+
+
+
+Now with training file ready in experiments folder! 🔥🔥🔥
+
+Sophia is an second order clipped stochastic optimization algorithm that uses an inexpensive stochastic estimate of the diagonal of the Hessian as an pre-conditioner and a clipping mechanism to control the worst case update size. It achieves better performance than adam in terms of validation pre-traing loss, total compute, and wall-clock time. By cutting model training cost in half, Sophia can help save millions if not billions of dollars in computational resources.
+
+
+## Benefits
+
+Sophia achievs the same validation pre training loss with 50% fewer number of steps than Adam
+
+50% less total compute and 50% less wall-clock time
+
+Seamless integration into existing training pipelines -- plug in and play!
+
+No special requirments on model architecture or computing infrastructure
+
+Supports both Hutchinson and Gauss-Newton-Bartlett Hessian Estimators
+
 
 
 # Algorithmic pseudocode:
