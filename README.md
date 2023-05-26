@@ -101,7 +101,7 @@ To run training use git clone method
  ```cd experiments```
 
  then run file
- ```python3 training.py````
+ ```python3 training.py```
 
  and if not then do the following:
 
