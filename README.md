@@ -1,9 +1,6 @@
-# Agora
-Agora is an new open source Multi-Modality AI Research Organization devoted to advancing Humanity!
+[![Multi-Modality](agorabanner.png)](https://discord.gg/qUtxnK2NMf)
 
-![Agora banner](agora-banner.png)
 
-[Join our Agora discord and contribute to this project or 40+ others!](https://discord.gg/qUtxnK2NMf)
 
 # Sophia Optimizer
 
