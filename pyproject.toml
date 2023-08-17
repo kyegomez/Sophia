@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sophia-optimizer"
-version = "0.2.3"
+version = "0.2.4"
 description = "Sophia Optimizer ULTRA FAST"
 authors = ["Kye Gomez <kye@apac.ai>"]
 license = "APACHE"
