@@ -8,7 +8,7 @@ from typing import List, Optional
 class SophiaG(Optimizer):
     def __init__(self, params, lr=1e-4, betas=(0.965, 0.99), rho = 0.04,
          weight_decay=1e-1, *, maximize: bool = False,
-         capturable: bool = False):
+         capturable: bool = False, dynamic: bool = False):
         if not 0.0 <= lr:
             raise ValueError("Invalid learning rate: {}".format(lr))
         if not 0.0 <= betas[0] < 1.0:
@@ -21,7 +21,7 @@ class SophiaG(Optimizer):
             raise ValueError("Invalid weight_decay value: {}".format(weight_decay))
         defaults = dict(lr=lr, betas=betas, rho=rho, 
                         weight_decay=weight_decay, 
-                        maximize=maximize, capturable=capturable)
+                        maximize=maximize, capturable=capturable, dynamic=dynamic)
         super(SophiaG, self).__init__(params, defaults)
 
     def __setstate__(self, state):
@@ -29,12 +29,13 @@ class SophiaG(Optimizer):
         for group in self.param_groups:
             group.setdefault('maximize', False)
             group.setdefault('capturable', False)
+            group.setdefault('dynamic', False)
         state_values = list(self.state.values())
         step_is_tensor = (len(state_values) != 0) and torch.is_tensor(state_values[0]['step'])
         if not step_is_tensor:
             for s in state_values:
                 s['step'] = torch.tensor(float(s['step']))
-    
+
     @torch.no_grad()
     def update_hessian(self):
         for group in self.param_groups:
@@ -55,6 +56,15 @@ class SophiaG(Optimizer):
 
                 state['hessian'].mul_(beta2).addcmul_(p.grad, p.grad, value=1 - beta2)
 
+    @torch.no_grad()
+    def update_exp_avg(self):
+        for group in self.param_groups:
+            beta1, beta2 = group['betas']
+            for p in group['params']:
+                if p.grad is None:
+                    continue
+                state = self.state[p]
+                state['exp_avg'].mul_(beta1).add_(p.grad, alpha=1 - beta1)
 
     @torch.no_grad()
     def step(self, closure=None, bs=5120):
@@ -62,6 +72,9 @@ class SophiaG(Optimizer):
         if closure is not None:
             with torch.enable_grad():
                 loss = closure()
+
+        self.update_hessian()
+        self.update_exp_avg()
 
         for group in self.param_groups:
             params_with_grad = []
