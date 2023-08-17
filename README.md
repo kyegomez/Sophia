@@ -1,7 +1,5 @@
 [![Multi-Modality](agorabanner.png)](https://discord.gg/qUtxnK2NMf)
 
-
-
 # Sophia Optimizer
 
 [Sophia: A Scalable Stochastic Second-order Optimizer for
@@ -9,13 +7,6 @@ Language Model Pre-training](https://arxiv.org/pdf/2305.14342.pdf)
 
 Cut Model Training Cost by 50%? with this all-new simple plug in and play Optimizer: Sophia
 
-
-## 👥 Share With Your Friends
-If you find Sophia useful, please share this GitHub repository with your friends and colleagues. Let's cut the cost of AI training together!
-
-[Share on Twitter](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Fkyegomez%2FSophia&text=Check%20out%20Sophia%20Optimizer%20-%20a%20second-order%20clipped%20stochastic%20optimization%20algorithm%20that%20cuts%20model%20training%20cost%20in%20half!%20%23DeepLearning%20%23AI%20%23Optimization)
-
-[Share on Linkedin](https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fgithub.com%2Fkyegomez%2FSophia&title=Sophia%20Optimizer&summary=Check%20out%20Sophia%20Optimizer%20-%20a%20second-order%20clipped%20stochastic%20optimization%20algorithm%20that%20cuts%20model%20training%20cost%20in%20half!%20%23DeepLearning%20%23AI%20%23Optimization)
 
 # Usage
 
