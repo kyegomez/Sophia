@@ -12,7 +12,6 @@ Cut Model Training Cost by 50%? with this all-new simple plug in and play Optimi
 
 Download with pip ```pip install Sophia-Optimizer``` 
 
-or 
 
 ```python 
 import torch 
