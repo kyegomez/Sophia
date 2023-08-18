@@ -2,8 +2,10 @@
 
 # Sophia Optimizer
 
-[Sophia: A Scalable Stochastic Second-order Optimizer for
+[PAPER LINK: Sophia: A Scalable Stochastic Second-order Optimizer for
 Language Model Pre-training](https://arxiv.org/pdf/2305.14342.pdf)
+
+[Author Implementation](https://github.com/Liuhong99/Sophia)
 
 Cut Model Training Cost by 50%? with this all-new simple plug in and play Optimizer: Sophia
 
