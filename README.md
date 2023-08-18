@@ -20,13 +20,6 @@ import torch
 from torch import nn
 from Sophia import SophiaG 
 
-
-#or decoupled
-#from Sophia import DecoupledSophia #plug in and play, personalize, improved maintainability
-
-
-#define your model
-
 class MyModel(nn.Module):
     def __init__(self):
         super(MyModel, self).__init__()
@@ -46,9 +39,6 @@ input_data = ... #input data
 
 #init the optimizer
 optimizer = SophiaG(model.parameters(), lr=2e-4, betas=(0.965, 0.99), rho = 0.01, weight_decay=1e-1)
-
-#decoupled
-#optimizer = DecoupledSophia(model.parameters(), lr=1e-3, betas=(0.9, 0.999), rho=0.04, weight_decay=1e-1,     estimator="Hutchinson")
 
 #training loop
 for epoch in range(epochs):
