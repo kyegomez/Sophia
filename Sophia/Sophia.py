@@ -6,9 +6,15 @@ from typing import List, Optional
 
 
 class SophiaG(Optimizer):
+    """
+    SophiaG optimizer class.
+    """
     def __init__(self, params, lr=1e-4, betas=(0.965, 0.99), rho = 0.04,
          weight_decay=1e-1, *, maximize: bool = False,
          capturable: bool = False, dynamic: bool = False):
+        """
+        Initialize the optimizer.
+        """
         if not 0.0 <= lr:
             raise ValueError("Invalid learning rate: {}".format(lr))
         if not 0.0 <= betas[0] < 1.0:
@@ -25,6 +31,9 @@ class SophiaG(Optimizer):
         super(SophiaG, self).__init__(params, defaults)
 
     def __setstate__(self, state):
+        """
+        Set the state of the optimizer.
+        """
         super().__setstate__(state)
         for group in self.param_groups:
             group.setdefault('maximize', False)
@@ -38,6 +47,9 @@ class SophiaG(Optimizer):
 
     @torch.no_grad()
     def update_hessian(self):
+        """
+        Update the hessian.
+        """
         for group in self.param_groups:
             beta1, beta2 = group['betas']
             for p in group['params']:
@@ -58,6 +70,9 @@ class SophiaG(Optimizer):
 
     @torch.no_grad()
     def update_exp_avg(self):
+        """
+        Update the exponential average.
+        """
         for group in self.param_groups:
             beta1, beta2 = group['betas']
             for p in group['params']:
@@ -68,6 +83,9 @@ class SophiaG(Optimizer):
 
     @torch.no_grad()
     def step(self, closure=None, bs=5120):
+        """
+        Perform a step of the optimizer.
+        """
         loss = None
         if closure is not None:
             with torch.enable_grad():
@@ -110,7 +128,7 @@ class SophiaG(Optimizer):
                 if self.defaults['capturable']:
                     bs = torch.ones((1,), dtype=torch.float, device=p.device) * bs
 
-            sophiag(params_with_grad,
+            self._sophiag(params_with_grad,
                   grads,
                   exp_avgs,
                   hessian,
@@ -126,7 +144,7 @@ class SophiaG(Optimizer):
 
         return loss
 
-def sophiag(params: List[Tensor],
+    def _sophiag(self, params: List[Tensor],
           grads: List[Tensor],
           exp_avgs: List[Tensor],
           hessian: List[Tensor],
@@ -140,28 +158,27 @@ def sophiag(params: List[Tensor],
           lr: float,
           weight_decay: float,
           maximize: bool):
+        """
+        SophiaG function.
+        """
+        if not all(isinstance(t, torch.Tensor) for t in state_steps):
+            raise RuntimeError("API has changed, `state_steps` argument must contain a list of singleton tensors")
 
-    if not all(isinstance(t, torch.Tensor) for t in state_steps):
-        raise RuntimeError("API has changed, `state_steps` argument must contain a list of singleton tensors")
+        self._single_tensor_sophiag(params,
+             grads,
+             exp_avgs,
+             hessian,
+             state_steps,
+             bs=bs,
+             beta1=beta1,
+             beta2=beta2,
+             rho=rho,
+             lr=lr,
+             weight_decay=weight_decay,
+             maximize=maximize,
+             capturable=capturable)
 
-    
-    func = _single_tensor_sophiag
-
-    func(params,
-         grads,
-         exp_avgs,
-         hessian,
-         state_steps,
-         bs=bs,
-         beta1=beta1,
-         beta2=beta2,
-         rho=rho,
-         lr=lr,
-         weight_decay=weight_decay,
-         maximize=maximize,
-         capturable=capturable)
-
-def _single_tensor_sophiag(params: List[Tensor],
+    def _single_tensor_sophiag(self, params: List[Tensor],
                          grads: List[Tensor],
                          exp_avgs: List[Tensor],
                          hessian: List[Tensor],
@@ -175,41 +192,43 @@ def _single_tensor_sophiag(params: List[Tensor],
                          weight_decay: float,
                          maximize: bool,
                          capturable: bool):
+        """
+        SophiaG function for single tensor.
+        """
+        for i, param in enumerate(params):
+            grad = grads[i] if not maximize else -grads[i]
+            exp_avg = exp_avgs[i]
+            hess = hessian[i]
+            step_t = state_steps[i]
 
-    for i, param in enumerate(params):
-        grad = grads[i] if not maximize else -grads[i]
-        exp_avg = exp_avgs[i]
-        hess = hessian[i]
-        step_t = state_steps[i]
-
-        if capturable:
-            assert param.is_cuda and step_t.is_cuda and bs.is_cuda 
+            if capturable:
+                assert param.is_cuda and step_t.is_cuda and bs.is_cuda 
             
-        if torch.is_complex(param):
-            grad = torch.view_as_real(grad)
-            exp_avg = torch.view_as_real(exp_avg)
-            hess = torch.view_as_real(hess)
-            param = torch.view_as_real(param)
+            if torch.is_complex(param):
+                grad = torch.view_as_real(grad)
+                exp_avg = torch.view_as_real(exp_avg)
+                hess = torch.view_as_real(hess)
+                param = torch.view_as_real(param)
 
-        # update step
-        step_t += 1
+            # update step
+            step_t += 1
 
-        # Perform stepweight decay
-        param.mul_(1 - lr * weight_decay)
+            # Perform stepweight decay
+            param.mul_(1 - lr * weight_decay)
 
-        # Decay the first and second moment running average coefficient
-        exp_avg.mul_(beta1).add_(grad, alpha=1 - beta1)
-        
-        if capturable:
-            step = step_t
-            step_size = lr 
-            step_size_neg = step_size.neg()
-
-            ratio = (exp_avg.abs() / (rho * bs * hess + 1e-15)).clamp(None,1)
-            param.addcmul_(exp_avg.sign(), ratio, value=step_size_neg)
-        else:
-            step = step_t.item()
-            step_size_neg = - lr 
+            # Decay the first and second moment running average coefficient
+            exp_avg.mul_(beta1).add_(grad, alpha=1 - beta1)
             
-            ratio = (exp_avg.abs() / (rho * bs * hess + 1e-15)).clamp(None,1)
-            param.addcmul_(exp_avg.sign(), ratio, value=step_size_neg)
+            if capturable:
+                step = step_t
+                step_size = lr 
+                step_size_neg = step_size.neg()
+
+                ratio = (exp_avg.abs() / (rho * bs * hess + 1e-15)).clamp(None,1)
+                param.addcmul_(exp_avg.sign(), ratio, value=step_size_neg)
+            else:
+                step = step_t.item()
+                step_size_neg = - lr 
+                
+                ratio = (exp_avg.abs() / (rho * bs * hess + 1e-15)).clamp(None,1)
+                param.addcmul_(exp_avg.sign(), ratio, value=step_size_neg)
