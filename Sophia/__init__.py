@@ -1,1 +1,1 @@
-from sophia.sophia import SophiaG, sophiag
+from Sophia.Sophia import SophiaG
