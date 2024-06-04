@@ -1,1 +1,1 @@
-from sophia.sophia import SophiaG
+from sophia.main import SophiaG
